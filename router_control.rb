@@ -1,3 +1,20 @@
+# Copyright 2011 Exavideo LLC.
+# 
+# This file is part of videohub_control.
+# 
+# videohub_control is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# videohub_control is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with videohub_control.  If not, see <http://www.gnu.org/licenses/>.
+
 require 'patchbay'
 require 'socket'
 require 'json'
@@ -169,7 +186,7 @@ class RouterController < Patchbay
         output_id = params[:id].to_i
         input = incoming_json['input']
         puts "would route #{output_id} from #{input}"
-        #@router_host.set_route(output_id, input)
+        @router_host.set_route(output_id, input)
         render :json => { :input => input }.to_json
     end
 
@@ -190,6 +207,8 @@ class RouterController < Patchbay
     end
 
     attr_accessor :router_host
+
+    self.files_dir = 'public_html'
 end
 
 app = RouterController.new
