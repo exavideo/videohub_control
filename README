@@ -1,0 +1,9 @@
+videohub_control: Configure your Videohub router via browser
+
+This was developed for RPI TV's HD production setup and is currently
+lacking some features that would be useful in a public-facing environment.
+(Authentication is the big one.)
+
+The $inputs and $outputs arrays set the labels. The Router.new(...) line
+controls the Videohub that the server will connect to.
+
